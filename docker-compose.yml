@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:16.2
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: bot_development
+    ports:
+      - 5432:5432
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - default
+    restart: always
+
+  redis:
+    image: 'redis:7.2.4'
+    ports:
+      - ${REDIS_PORT}:${REDIS_PORT}
+volumes:
+  pg_data:
+  service_log:
+
+networks:
+  default:
+    name: backend_default
