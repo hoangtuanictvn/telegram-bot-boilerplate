@@ -18,7 +18,7 @@ services:
   redis:
     image: 'redis:7.2.4'
     ports:
-      - ${REDIS_PORT}:${REDIS_PORT}
+      - 6379:6397
 volumes:
   pg_data:
   service_log:
