@@ -1,9 +1,21 @@
-import { Action, Ctx, Start, Update } from "nestjs-telegraf";
+import { Action, Ctx, Hears, Message, On, Start, Update } from "nestjs-telegraf";
 import { Markup, Scenes } from "telegraf";
 
 
 @Update()
 export class HomeController {
+    @On('text')
+    async HearAllMessage(
+        @Ctx() ctx: Scenes.SceneContext,
+        @Message() msg: { 
+            message_id: number; 
+            text: string; 
+            reply_to_message: { message_id: number; text: string } }
+        ) {
+        
+    }
+
+    
     @Start()
     async onStart(@Ctx() ctx: Scenes.SceneContext) {
         const keyboard = Markup.inlineKeyboard([
